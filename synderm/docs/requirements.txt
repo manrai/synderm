@@ -1,0 +1,10 @@
+# Sphinx documentation
+sphinx>=4.0
+sphinx_rtd_theme>=0.5.0
+
+# Extensions for Sphinx
+nbsphinx>=0.8.0
+
+# Dependencies for Jupyter notebooks
+jupyter>=1.0.0
+nbconvert>=6.0.0
