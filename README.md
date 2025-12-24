@@ -8,19 +8,21 @@ Synderm is a package designed to enhance image classification tasks using synthe
 
 ## Table of Contents
 
-- [Features](#features)
-- [Dataset Details](#dataset-details)
-- [Models](#models)
-- [Installation](#installation)
-- [Quick Start](#quick-start)
-  - [1. Creating the Dataset](#1-creating-the-dataset)
-  - [2. Training the Synthetic Image Generator](#2-training-the-synthetic-image-generator)
-  - [3. Generate Synthetic Images](#3-generate-synthetic-images)
-  - [4. Augmenting the Classifier with Synthetic Images](#4-augmenting-the-classifier-with-synthetic-images)
-- [Example Scripts](#example-scripts)
-- [Data](#data)
-- [Contributing](#contributing)
-- [License](#license)
+- [Synderm](#synderm)
+  - [Table of Contents](#table-of-contents)
+  - [Features](#features)
+    - [Dataset Details](#dataset-details)
+  - [Models](#models)
+  - [Installation](#installation)
+  - [Quick Start](#quick-start)
+    - [1. Creating the Dataset](#1-creating-the-dataset)
+    - [2. Training the Synthetic Image Generator](#2-training-the-synthetic-image-generator)
+    - [3. Generate Synthetic Images](#3-generate-synthetic-images)
+    - [4. Augmenting the Classifier with Synthetic Images](#4-augmenting-the-classifier-with-synthetic-images)
+  - [Example Scripts](#example-scripts)
+  - [Data](#data)
+  - [Contributing](#contributing)
+  - [License](#license)
 
 ## Features
 
@@ -55,13 +57,12 @@ All functions assume that the training and validation datasets return entries wi
 
 ## Installation
 ```bash
-# Install the requirements
-pip install -r requirements.txt
-
-# To install from the Python Package Index:
 pip install synderm
+```
 
-# Build from source
+Build from source
+```bash
+pip install -r requirements.txt
 pip install -e .
 ```
 
@@ -118,13 +119,14 @@ class SampleDataset(Dataset):
 Fine-tune a diffusion model using your dataset to generate synthetic images:
 
 ```python
-from synderm.synderm.fine_tune.text_to_image_diffusion import fine_tune_text_to_image
+from synderm.fine_tune import fine_tune_text_to_image
 
 output_dir = os.path.join(EXPERIMENT_DIR, "dreambooth-outputs")
 
 fine_tune_text_to_image(
     train_dataset=train_dataset,
-    pretrained_model_name_or_path="stabilityai/stable-diffusion-2-1-base",
+    #pretrained_model_name_or_path="stabilityai/stable-diffusion-2-1-base",
+    pretrained_model_name_or_path="Manojb/stable-diffusion-2-1-base",
     instance_prompt="An image of an English Springer",
     validation_prompt_format="An image of an English Springer",
     output_dir=output_dir,
@@ -170,7 +172,7 @@ generate_synthetic_dataset(
 Combine real and synthetic data to train and evaluate the classifier:
 
 ```python
-from synderm.utils.utils import synthetic_train_val_split
+from synderm.utils import synthetic_train_val_split
 
 synthetic_dataset = SyntheticDataset(os.path.join(image_output_path, "text-to-image"))
 

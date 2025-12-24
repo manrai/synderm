@@ -169,3 +169,5 @@ synderm/docs/_build/*
 synderm/docs/_static/*
 synderm/docs/_templates/*
 dist/*
+
+test_env
