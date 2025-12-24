@@ -79,7 +79,7 @@ git add .
 git commit -m "Release v0.1.4" 
 git tag -a v0.1.4 -m "Release v0.1.4" 
 git push origin main
-push origin v0.1.4
+git push origin v0.1.4
 ```
 
 Git tag management:

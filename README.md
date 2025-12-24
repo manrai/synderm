@@ -6,14 +6,23 @@
 
 Synderm is a package designed to enhance image classification tasks using synthetic data generation. It provides tools to generate high-quality synthetic images using diffusion models, fine-tune these models on your specific datasets, and seamlessly integrate synthetic data into your training pipelines to improve classifier performance.
 
+## Installation
+```bash
+pip install synderm
+
+# Or, build from source
+pip install -r requirements.txt
+pip install -e .
+```
+
 ## Table of Contents
 
 - [Synderm](#synderm)
+  - [Installation](#installation)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
     - [Dataset Details](#dataset-details)
   - [Models](#models)
-  - [Installation](#installation)
   - [Quick Start](#quick-start)
     - [1. Creating the Dataset](#1-creating-the-dataset)
     - [2. Training the Synthetic Image Generator](#2-training-the-synthetic-image-generator)
@@ -48,26 +57,10 @@ See [WebDataset FAQ](https://github.com/webdataset/webdataset/blob/main/FAQ.md) 
 
 Synderm directly supports the following models for image generation:
 
-- **Text-to-image:** [`stabilityai/stable-diffusion-2-1-base`](https://huggingface.co/stabilityai/stable-diffusion-2-1-base)
+- **Text-to-image:** [`stabilityai/stable-diffusion-2-1-base`](https://huggingface.co/Manojb/stable-diffusion-2-1-base)
 - **Inpainting/outpainting:** [`runwayml/stable-diffusion-inpainting`](https://huggingface.co/runwayml/stable-diffusion-inpainting)
 
-Other diffusion models can be used but are currently untested.
-
 All functions assume that the training and validation datasets return entries with an `image`, `label`, and `id` field. If your dataset does not conform to this structure, please adjust it accordingly (see examples below).
-
-## Installation
-```bash
-pip install synderm
-```
-
-Build from source
-```bash
-pip install -r requirements.txt
-pip install -e .
-```
-
-*Ensure you have [PyTorch](https://pytorch.org/) and [FastAI](https://fast.ai/) installed.*
-
 ## Quick Start
 
 ### 1. Creating the Dataset
